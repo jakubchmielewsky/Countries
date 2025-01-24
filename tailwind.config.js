@@ -18,6 +18,13 @@ export default {
           'very-dark-blue-text': 'hsl(200, 15%, 8%)',
           'dark-gray-input': 'hsl(0, 0%, 52%)',
           'very-light-gray-bg': 'hsl(0, 0%, 98%)',
+          gray: {
+            '111517': '#111517',
+            '80': '#808080',
+            'b2': '#B2B2B2',
+            'c4': '#C4C4C4',
+            'fa': '#FAFAFA',
+          },
         }
       },
       fontFamily: {

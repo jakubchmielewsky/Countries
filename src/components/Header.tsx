@@ -18,7 +18,7 @@ const Header = () => {
     },[isDarkMode,htmlElement.classList])
 
     return ( 
-        <div className="h-20 flex items-center justify-between px-4 shadow-md dark:text-white dark:bg-c-very-dark-blue-bg">
+        <div className="h-20 flex items-center justify-between px-4 shadow-md text-c-gray-111517 dark:text-white dark:bg-c-dark-blue-elements">
             <h2 className="text-sm font-extrabold">Where in the world?</h2>
             <button className=" flex gap-3 text-xs font-semibold items-center" onClick={toggleDarkMode}>
                 {isDarkMode?<IoMoonSharp/>:<IoMoonOutline/>}
