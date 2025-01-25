@@ -19,9 +19,20 @@ export const useCountriesStore = create<CountriesInterface>((set) => ({
 
         const data = await response.json();
 
-        console.log(data);
+        const mappedCountries: CountryType[] = data.map((country: any) => ({
+            name: {official: country.name.common, native: "Unknown"},
+            flagURL: country.flags.svg,
+            population: country.population,
+            region: country.region,
+            subregion: "unknown",
+            capital: country.capital,
+            domain: country.tld,
+            currency: "not set",
+            languages: [],
+            borderCountries: [],
+        }))
 
-        set({countriesInitialized: true});
+        set({countriesInitialized: true, countries: mappedCountries});
         } catch (error) {
             console.error(error);
         }
