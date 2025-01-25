@@ -12,7 +12,7 @@ const CountryCard: React.FC<Props> = ({flagURL, name, population, region, capita
             <img src={flagURL} alt="country flag" className="w-full"/>
             <div className="flex flex-col py-8 px-6 gap-0.5">
                 <h4 className="text-[18px] font-extrabold mb-4">{name}</h4>
-                <p>Population: <span>{population}</span></p>
+                <p>Population: <span>{population.toLocaleString("en-US")}</span></p>
                 <p>Region: <span>{region}</span></p>
                 <p>Capital: <span>{capital}</span></p>
 

@@ -20,17 +20,25 @@ export const useCountriesStore = create<CountriesInterface>((set) => ({
         const data = await response.json();
 
         const mappedCountries: CountryType[] = data.map((country: any) => ({
-            name: {official: country.name.common, native: "Unknown"},
-            flagURL: country.flags.svg,
-            population: country.population,
-            region: country.region,
-            subregion: "unknown",
-            capital: country.capital,
-            domain: country.tld,
-            currency: "not set",
-            languages: [],
-            borderCountries: [],
-        }))
+            name: {
+                official: country.name.official,
+                native: Object.values(country.name.nativeName || {})
+                  .map((lang: any) => lang.official)
+                  .join(", ") || country.name.official,
+              },
+              flagURL: country.flags?.png || "",
+              population: country.population || 0,
+              region: country.region || "",
+              subRegion: country.subregion || "",
+              capital: country.capital?.[0] || "No capital",
+              domain: country.tld?.[0] || "",
+              currency: Object.values(country.currencies || {})
+                .map((currency: any) => `${currency.name} (${currency.symbol || ""})`)
+                .join(", "),
+              languages: Object.values(country.languages || []),
+              borderCountries: country.borders || [],
+            
+        }));
 
         set({countriesInitialized: true, countries: mappedCountries});
         } catch (error) {

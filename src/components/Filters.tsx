@@ -18,7 +18,7 @@ const Filters = () => {
     }
 
     return ( 
-        <div className="flex flex-col justify-between h-32">
+        <div className="flex flex-col justify-between h-[168px] px-4 py-5 tablet:flex-row tablet:px-14">
             <SearchInput/>
             <Dropdown value={value} setValue={handleValueChange} placeholder="Filter by Region" options={options}/>
         </div>

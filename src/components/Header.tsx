@@ -18,12 +18,15 @@ const Header = () => {
     },[isDarkMode,htmlElement.classList])
 
     return ( 
-        <div className="h-20 flex items-center justify-between px-4 shadow-md text-c-gray-111517 dark:text-white dark:bg-c-dark-blue-elements">
-            <h2 className="text-sm font-extrabold">Where in the world?</h2>
-            <button className=" flex gap-3 text-xs font-semibold items-center" onClick={toggleDarkMode}>
-                {isDarkMode?<IoMoonSharp/>:<IoMoonOutline/>}
-                Dark Mode
-            </button>
+        <div className="shadow-md text-c-gray-111517 dark:text-white dark:bg-c-dark-blue-elements">
+            <div className="px-4 h-20 flex items-center justify-between max-w-[1600px] mx-auto  tablet:px-14">
+                <h2 className="text-sm font-extrabold">Where in the world?</h2>
+                <button className=" flex gap-3 text-xs font-semibold items-center" onClick={toggleDarkMode}>
+                    {isDarkMode?<IoMoonSharp/>:<IoMoonOutline/>}
+                    Dark Mode
+                </button>
+            </div>
+                
         </div>
      );
 }

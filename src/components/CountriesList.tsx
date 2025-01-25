@@ -5,7 +5,7 @@ const CountriesList = () => {
     const {countries} = useCountriesStore();
 
     return ( 
-        <ul className="w-full h-full grid grid-cols-1 px-14 gap-12">
+        <ul className="w-full h-full grid grid-cols-1 px-14 gap-12 tablet:grid-cols-2 tablet-lg:grid-cols-3 desktop-lg:grid-cols-4">
             {countries.map((country,index)=>{
                 return(
                     <li key={index}>
