@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useCountriesStore } from './stores/countriesStore';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
+import CountryDetails from './pages/CountryDetails';
 
 function App() {
   const {loadCountries, countriesInitialized} = useCountriesStore();
@@ -22,7 +23,7 @@ function App() {
         >
           <Route
             path='/country/:countryName'
-            element={<div>country details</div>}
+            element={<CountryDetails/>}
           />
         </Route>
       </Routes>
