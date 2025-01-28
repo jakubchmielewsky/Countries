@@ -1,5 +1,5 @@
 import { IoArrowBackSharp } from "react-icons/io5";
-import StyledLink from "../components/StyledLink";
+import StyledNavigationButton from "../components/StyledNavigationButton";
 import { Navigate, useParams } from "react-router-dom";
 import { useCountriesStore } from "../stores/countriesStore";
 
@@ -17,8 +17,7 @@ const CountryDetails = () => {
     <div className="mx-auto px-4 tablet:px-8 py-8">
       {/* Back button */}
       <div className="w-full pb-5">
-        <StyledLink
-          to="-1"
+        <StyledNavigationButton
           icon={IoArrowBackSharp}
           text="Back"
           className="my-9"
@@ -37,12 +36,12 @@ const CountryDetails = () => {
         </div>
 
         {/* Data */}
-        <div className="mt-10 tablet:mt-0 tablet-lg:w-1/2 flex flex-col desktop-lg:flex-row flex-wrap gap-12">
+        <div className="mt-10 tablet:mt-0 tablet-lg:w-1/2 flex flex-wrap gap-12">
           <h4 className="text-[22px] font-extrabold w-full">
             {countryData.name.official}
           </h4>
           {/* First column */}
-          <div className="flex flex-col gap-4 desktop-lg:w-2/5 grow">
+          <div className="flex flex-col gap-4 tablet:w-2/5 tablet-lg:w-full desktop-lg:w-2/5 grow">
             {countryData.name.native &&
               countryData.name.native !== countryData.name.official && (
                 <p>
@@ -71,7 +70,7 @@ const CountryDetails = () => {
           </div>
 
           {/* Second column */}
-          <div className="flex flex-col gap-4 desktop-lg:w-2/5 grow">
+          <div className="flex flex-col gap-4 tablet:w-2/5 tablet-lg:w-full desktop-lg:w-2/5 grow">
             <p>
               <span className="font-semibold">Top Level Domain: </span>
               {countryData.domain}
@@ -92,7 +91,7 @@ const CountryDetails = () => {
               <h5 className="font-semibold mb-4">Border Countries:</h5>
               <div className="flex flex-wrap gap-2">
                 {neighboursData.map((neighbour) => (
-                  <StyledLink
+                  <StyledNavigationButton
                     key={neighbour.officialName}
                     text={neighbour.commonName}
                     to={`/country/${neighbour.officialName}`}
