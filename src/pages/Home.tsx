@@ -7,7 +7,7 @@ const Home = () => {
   const pathname = useLocation().pathname;
 
   return (
-    <div className="min-h-screen font-nunito bg-c-gray-fa dark:bg-c-very-dark-blue-bg">
+    <div className="min-h-screen font-nunito bg-c-gray-fa dark:bg-c-very-dark-blue-bg dark:text-white">
       <Header />
       <div className="max-w-[1600px] mx-auto px-4 py-5 tablet:px-14">
         {pathname.includes("/country/") ? (

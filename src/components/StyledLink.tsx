@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 interface Props {
   to: string;
   text: string;
-  icon: IconType;
+  icon?: IconType;
   className?: string;
 }
 
@@ -19,7 +19,7 @@ const StyledLink: React.FC<Props> = ({
       to={to}
       className={`flex items-center shadow-custom-small px-6 py-1.5 w-fit text-base dark:bg-c-dark-blue-elements dark:text-white ${className}`}
     >
-      <Icon className="mr-3" />
+      {Icon && <Icon className="mr-3" />}
       {text}
     </Link>
   );
