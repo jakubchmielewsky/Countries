@@ -2,11 +2,11 @@ import { useCountriesStore } from "../stores/countriesStore";
 import CountryCard from "./CountryCard";
 
 const CountriesList = () => {
-  const { countries } = useCountriesStore();
+  const { filteredCountries } = useCountriesStore();
 
   return (
     <ul className="w-full h-full grid grid-cols-1 mt-2 px-9 gap-12 tablet:px-0 tablet:grid-cols-2 tablet-lg:grid-cols-3 desktop-lg:grid-cols-4">
-      {countries.map((country, index) => {
+      {filteredCountries.map((country, index) => {
         return (
           <li key={index}>
             <CountryCard

@@ -1,22 +1,38 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Dropdown from "./Dropdown";
 import SearchInput from "./SearchInput";
+import { useCountriesStore } from "../stores/countriesStore";
 
-const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
+const options = [
+  "Africa",
+  "Americas",
+  "Asia",
+  "Europe",
+  "Oceania",
+  "Antarctic",
+];
 
 const Filters = () => {
-  const [value, setValue] = useState("");
+  const { filterCountries, filters, setFilter } = useCountriesStore();
 
-  const handleValueChange = (newValue: string) => {
-    setValue(newValue);
+  useEffect(() => {
+    filterCountries();
+  }, [filters, filterCountries]);
+
+  const handleRegionChange = (newValue: string) => {
+    setFilter("region", newValue);
+  };
+
+  const handleQueryChange = (newValue: string) => {
+    setFilter("query", newValue);
   };
 
   return (
     <div className="flex flex-col justify-between h-[148px] pb-5 tablet:flex-row tablet:items-center">
-      <SearchInput />
+      <SearchInput value={filters.query} onChange={handleQueryChange} />
       <Dropdown
-        value={value}
-        setValue={handleValueChange}
+        value={filters.region}
+        onChange={handleRegionChange}
         placeholder="Filter by Region"
         options={options}
       />

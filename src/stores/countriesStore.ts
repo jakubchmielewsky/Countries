@@ -3,7 +3,11 @@ import { CountryType } from "../types/types";
 
 interface CountriesInterface {
   countries: CountryType[];
+  filteredCountries: CountryType[];
   countriesInitialized: boolean;
+  filters: { query: string; region: string };
+  setFilter: (type: string, value: string) => void;
+  filterCountries: () => void;
   loadCountries: () => void;
   getCountryDataByName: (name: string) => CountryType | null;
   getNeighboursData: (ISOCodesList: string[]) => Array<{
@@ -14,7 +18,36 @@ interface CountriesInterface {
 
 export const useCountriesStore = create<CountriesInterface>((set, get) => ({
   countries: [],
+  filteredCountries: [],
   countriesInitialized: false,
+  filters: { query: "", region: "" },
+
+  setFilter: (type, value) => {
+    set((prev) => ({
+      ...prev,
+      filters: {
+        ...prev.filters,
+        [type]: value,
+      },
+    }));
+  },
+
+  filterCountries: () => {
+    const { filters, countries } = get();
+
+    const filteredCountries = countries
+      .filter(
+        (country) =>
+          (filters.region === "" || country.region === filters.region) &&
+          (country.name.official
+            .toLowerCase()
+            .includes(filters.query.toLowerCase()) ||
+            country.capital.toLowerCase().includes(filters.query.toLowerCase()))
+      )
+      .sort((a, b) => a.name.official.localeCompare(b.name.official));
+
+    set({ filteredCountries });
+  },
 
   loadCountries: async () => {
     try {
